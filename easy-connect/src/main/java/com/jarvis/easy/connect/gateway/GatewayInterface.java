@@ -1,4 +1,4 @@
-package com.jarvis.easy.connect.server;
+package com.jarvis.easy.connect.gateway;
 
 public interface GatewayInterface {
 

@@ -1,13 +1,13 @@
-package org.jarvis.easyiot;
+package com.jarvis.easyiot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EasyiotApplication {
+public class EasyIotApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EasyiotApplication.class, args);
+		SpringApplication.run(EasyIotApplication.class, args);
 	}
 
 }
