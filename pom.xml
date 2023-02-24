@@ -9,6 +9,7 @@
         <module>easy-protocol</module>
         <module>easy-common</module>
         <module>easy-web</module>
+        <module>easy-data</module>
     </modules>
     <groupId>com.jarvis</groupId>
     <artifactId>easy-iot</artifactId>
@@ -36,6 +37,7 @@
                 <version>1.18.20</version>
                 <scope>compile</scope>
             </dependency>
+
             <!--		vertx-->
             <dependency>
                 <groupId>io.vertx</groupId>
@@ -65,14 +67,40 @@
                 <version>7.5.11</version>
             </dependency>
 
-
             <dependency>
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
                 <version>2.7</version>
             </dependency>
-        </dependencies>
 
+            <!--            postgresql-->
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>42.3.1</version>
+            </dependency>
+
+            <!--            spring-data-jpa-->
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-jpa</artifactId>
+                <version>2.5.3</version>
+            </dependency>
+
+            <!--            nashhorn-->
+            <dependency>
+                <groupId>org.openjdk.nashorn</groupId>
+                <artifactId>nashorn-core</artifactId>
+                <version>15.2</version>
+            </dependency>
+
+            <!--            minio-->
+            <dependency>
+                <groupId>io.minio</groupId>
+                <artifactId>minio</artifactId>
+                <version>8.1.0</version>
+            </dependency>
+        </dependencies>
     </dependencyManagement>
 
     <build>

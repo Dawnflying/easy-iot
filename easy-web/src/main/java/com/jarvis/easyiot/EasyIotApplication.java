@@ -5,9 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class EasyIotApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(EasyIotApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(EasyIotApplication.class, args);
+    }
 }

@@ -1,21 +1,30 @@
 package com.jarvis.easy.connect.mqtt;
 
+import com.jarvis.easy.connect.servers.ServerInterface;
 import io.netty.handler.codec.mqtt.MqttQoS;
 import io.vertx.core.Vertx;
 import io.vertx.core.buffer.Buffer;
-import io.vertx.mqtt.MqttEndpoint;
 import io.vertx.mqtt.MqttServer;
 import io.vertx.mqtt.MqttServerOptions;
+import lombok.Data;
 
 import java.util.Arrays;
+import java.util.Map;
 
-public class DefaultMqttServer {
-    public static void main(String[] args) {
+/**
+ * @author lixiaofei
+ */
+@Data
+public class DefaultMqttServer implements ServerInterface {
+
+    private String id;
+
+    private Map<String, Object> properties;
+
+    public void start() {
         Vertx vertx = Vertx.vertx();
 
-        MqttServerOptions options = new MqttServerOptions()
-                .setPort(1883)
-                .setHost("0.0.0.0");
+        MqttServerOptions options = new MqttServerOptions().setPort(1883).setHost("0.0.0.0");
 
         MqttServer mqttServer = MqttServer.create(vertx, options);
 
@@ -27,8 +36,7 @@ public class DefaultMqttServer {
                 System.out.println("[username = " + endpoint.auth().getUsername() + ", password = " + endpoint.auth().getPassword() + "]");
             }
             if (endpoint.will() != null && endpoint.will().isWillFlag()) {
-                System.out.println("[will flag = " + endpoint.will().isWillFlag() + " topic = " + endpoint.will().getWillTopic() +
-                        " message = " + endpoint.will().getWillMessage() + " QoS = " + endpoint.will().getWillQos() + "]");
+                System.out.println("[will flag = " + endpoint.will().isWillFlag() + " topic = " + endpoint.will().getWillTopic() + " message = " + endpoint.will().getWillMessage() + " QoS = " + endpoint.will().getWillQos() + "]");
             }
 
             endpoint.accept(false);
@@ -80,5 +88,14 @@ public class DefaultMqttServer {
     }
 
 
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public Map<String, Object> getProperties() {
+        return properties;
+    }
 }
 

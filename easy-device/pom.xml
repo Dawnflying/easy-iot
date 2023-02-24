@@ -11,5 +11,12 @@
 
     <artifactId>easy-device</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.jarvis</groupId>
+            <artifactId>easy-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>
