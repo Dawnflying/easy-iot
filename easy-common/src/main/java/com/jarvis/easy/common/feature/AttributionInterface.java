@@ -16,7 +16,9 @@ public interface AttributionInterface {
     /**
      * @param key
      */
-    void removeAtribution(String key);
+    void removeAttribution(String key);
+
+    String getAttribution(String key);
 
     /**
      * @return

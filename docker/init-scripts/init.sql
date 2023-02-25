@@ -5,7 +5,7 @@ CREATE DATABASE easy_iot;
 \c easy_iot;
 
 -- 创建设备表
-CREATE TABLE easy_table_device (
+CREATE TABLE device_meta (
                                    id VARCHAR(64) PRIMARY KEY,
                                    name VARCHAR(32),
                                    created_at TIMESTAMP DEFAULT now(),

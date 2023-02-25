@@ -1,6 +1,7 @@
 package com.jarvis.easy.protocol.engine;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import javax.script.*;
 import java.util.Map;
@@ -9,6 +10,7 @@ import java.util.Map;
  * @author lixiaofei
  */
 @Slf4j(topic = "error")
+@Component
 public class ScriptEngineExecutor {
 
     private ScriptEngineManager manager = new ScriptEngineManager();

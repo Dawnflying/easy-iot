@@ -15,10 +15,10 @@ services:
       POSTGRES_INITDB_WALDIR: /var/lib/postgresql/data/pgwal
       TZ: 'Asia/Shanghai'
     volumes:
-      - db-data:/var/lib/postgresql/data
+#      - db-data:/var/lib/postgresql/data
       - db-backup:/backup
       - ./init-scripts:/docker-entrypoint-initdb.d
-      - ./config/pg_hba.conf:/var/lib/postgresql/data/pgdata/pg_hba.conf
+#      - ./config/pg_hba.conf:/var/lib/postgresql/data/pgdata/pg_hba.conf
     command: >
       postgres -c config_file=/var/lib/postgresql/data/pgdata/postgresql.conf
                -c logging_collector=on

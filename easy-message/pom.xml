@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>easy-message</artifactId>
-
+    <packaging>pom</packaging>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
@@ -20,6 +20,11 @@
         <dependency>
             <groupId>com.jarvis</groupId>
             <artifactId>easy-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jarvis</groupId>
+            <artifactId>easy-data</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

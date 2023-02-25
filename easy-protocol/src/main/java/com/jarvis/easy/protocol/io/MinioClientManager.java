@@ -1,16 +1,19 @@
 package com.jarvis.easy.protocol.io;
 
-import io.minio.MinioClient;
+import io.minio.*;
+import io.minio.messages.Bucket;
+import io.minio.messages.Item;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
 
 /**
  * @author lixiaofei
  */
 @Component
-public class MinioClientManager {
+public class MinioClientManager implements MinioInterface {
 
     @Value("${spring.cloud.minio.endpoint}")
     private String endpoint;
@@ -30,5 +33,28 @@ public class MinioClientManager {
     }
 
 
+    @Override
+    public ObjectWriteResponse putObject(PutObjectArgs args) {
+        return null;
+    }
 
+    @Override
+    public GetObjectResponse getObject(GetObjectArgs args) {
+        return null;
+    }
+
+    @Override
+    public void removeObject(RemoveObjectArgs args) {
+
+    }
+
+    @Override
+    public Iterable<Result<Item>> listObjects(ListObjectsArgs args) {
+        return null;
+    }
+
+    @Override
+    public List<Bucket> listBuckets() {
+        return null;
+    }
 }
