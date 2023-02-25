@@ -1,11 +1,14 @@
 package com.jarvis.easy.connect.mqtt;
 
+import com.jarvis.easy.common.entity.MessageData;
 import com.jarvis.easy.connect.servers.ServerInterface;
+import com.jarvis.easy.message.queue.MessageDataPersistentQueueManager;
 import io.netty.handler.codec.mqtt.MqttQoS;
 import io.vertx.core.Vertx;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.mqtt.MqttServer;
 import io.vertx.mqtt.MqttServerOptions;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.Arrays;
@@ -15,13 +18,15 @@ import java.util.Map;
  * @author lixiaofei
  */
 @Data
+@AllArgsConstructor
 public class DefaultMqttServer implements ServerInterface {
 
     private String id;
 
+    private String name;
     private Map<String, Object> properties;
 
-    public void start(Map<String, Object> properties) {
+    public void start() {
         Vertx vertx = Vertx.vertx();
 
         MqttServerOptions options = new MqttServerOptions().setPort(1883).setHost("0.0.0.0");
@@ -29,7 +34,7 @@ public class DefaultMqttServer implements ServerInterface {
         MqttServer mqttServer = MqttServer.create(vertx, options);
 
         mqttServer.endpointHandler(endpoint -> {
-
+            endpoint.publishAutoAck(true);
             System.out.println("MQTT client [" + endpoint.clientIdentifier() + "] request to connect, clean session = " + endpoint.isCleanSession());
 
             if (endpoint.auth() != null) {
@@ -40,6 +45,8 @@ public class DefaultMqttServer implements ServerInterface {
             }
 
             endpoint.accept(false);
+
+            System.out.println("is it endpoint auto keep alive" + endpoint.isAutoKeepAlive());
 
             endpoint.publishHandler(message -> {
                 String topic = message.topicName();
@@ -59,6 +66,13 @@ public class DefaultMqttServer implements ServerInterface {
 
                 System.out.println("Payload : " + payload.toString());
 
+                MessageData messageData = new MessageData();
+                messageData.setMessageId(message.messageId());
+                messageData.setPayload(message.payload().getBytes());
+                messageData.setDup(isDup);
+                messageData.setRetain(isRetain);
+                messageData.setTopicName(topic);
+                MessageDataPersistentQueueManager.INSTANCE.save(topic, null, messageData);
                 //向所有客户端广播
                 endpoint.publish(topic, payload, qosLevel, false, isRetain);
 
@@ -91,6 +105,11 @@ public class DefaultMqttServer implements ServerInterface {
     @Override
     public String getId() {
         return id;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     @Override

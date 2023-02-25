@@ -10,6 +10,7 @@
         <module>easy-common</module>
         <module>easy-web</module>
         <module>easy-data</module>
+        <module>easy-message</module>
     </modules>
     <groupId>com.jarvis</groupId>
     <artifactId>easy-iot</artifactId>
@@ -105,7 +106,42 @@
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
-                <version>31.1-jre</version>
+                <version>28.0-jre</version>
+            </dependency>
+
+            <!--            logback-->
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>1.2.5</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>io.opentelemetry</groupId>
+                <artifactId>opentelemetry-api</artifactId>
+                <version>1.17.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.opentelemetry</groupId>
+                <artifactId>opentelemetry-exporter-logging</artifactId>
+                <version>1.17.0</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>io.opentelemetry</groupId>
+                <artifactId>opentelemetry-sdk-trace</artifactId>
+                <version>1.17.0</version>
+                <optional>true</optional>
+            </dependency>
+
+            <dependency>
+                <groupId>io.opentelemetry</groupId>
+                <artifactId>opentelemetry-sdk</artifactId>
+                <version>1.17.0</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
 

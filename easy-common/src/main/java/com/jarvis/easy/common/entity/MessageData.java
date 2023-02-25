@@ -1,5 +1,6 @@
 package com.jarvis.easy.common.entity;
 
+import com.jarvis.easy.common.feature.TraceableInterface;
 import lombok.Data;
 
 import java.nio.Buffer;
@@ -8,7 +9,7 @@ import java.nio.Buffer;
  * @author lixiaofei
  */
 @Data
-public class MessageEntity {
+public class MessageData implements TraceableInterface {
 
     /**
      *
@@ -29,5 +30,11 @@ public class MessageEntity {
     /**
      *
      */
-    private Buffer payload;
+    private byte[] payload;
+
+    private long createTs;
+
+    private long modifiedTs;
+
+    private String traceId;
 }
