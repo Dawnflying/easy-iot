@@ -21,7 +21,7 @@ public class DefaultMqttServer implements ServerInterface {
 
     private Map<String, Object> properties;
 
-    public void start() {
+    public void start(Map<String, Object> properties) {
         Vertx vertx = Vertx.vertx();
 
         MqttServerOptions options = new MqttServerOptions().setPort(1883).setHost("0.0.0.0");

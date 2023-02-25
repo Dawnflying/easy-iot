@@ -1,4 +1,4 @@
-package com.jarvis.common.entity;
+package com.jarvis.easy.common.entity;
 
 import lombok.Data;
 

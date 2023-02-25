@@ -1,4 +1,4 @@
-package com.jarvis.common.bdb;
+package com.jarvis.easy.common.bdb;
 
 import com.sleepycat.bind.EntryBinding;
 import com.sleepycat.bind.serial.SerialBinding;

@@ -1,4 +1,4 @@
-package com.jarvis.common.bdb;
+package com.jarvis.easy.common.bdb;
 
 import com.sleepycat.bind.serial.StoredClassCatalog;
 import com.sleepycat.je.*;

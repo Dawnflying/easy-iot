@@ -1,8 +1,8 @@
 -- 创建数据库
-CREATE DATABASE easy-iot;
+CREATE DATABASE easy_iot;
 
 -- 连接到数据库
-\c easy-iot;
+\c easy_iot;
 
 -- 创建设备表
 CREATE TABLE easy_table_device (

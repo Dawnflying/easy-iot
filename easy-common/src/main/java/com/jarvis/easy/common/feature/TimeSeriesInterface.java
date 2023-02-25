@@ -1,7 +1,7 @@
-package com.jarvis.common.feature;
+package com.jarvis.easy.common.feature;
 
-import com.jarvis.common.entity.TimeSeriesData;
-import com.jarvis.common.entity.TimeSeriesSnapshotData;
+import com.jarvis.easy.common.entity.TimeSeriesData;
+import com.jarvis.easy.common.entity.TimeSeriesSnapshotData;
 
 import java.util.List;
 

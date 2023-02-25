@@ -1,10 +1,10 @@
 package com.jarvis.easy.protocol.io;
 
 import io.minio.MinioClient;
-import org.simpleframework.xml.core.Resolve;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
 
 /**
  * @author lixiaofei
@@ -23,6 +23,8 @@ public class MinioClientManager {
 
     private MinioClient minioClient;
 
+
+    @PostConstruct
     public void init() {
         minioClient = MinioClient.builder().endpoint(endpoint).credentials(accessKey, accessSceret).build();
     }

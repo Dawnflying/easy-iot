@@ -1,7 +1,7 @@
 package com.jarvis.easy.device.meta;
 
-import com.jarvis.common.feature.IdGeneratorInterface;
-import com.jarvis.common.feature.TextSearchInterface;
+import com.jarvis.easy.common.feature.IdGeneratorInterface;
+import com.jarvis.easy.common.feature.TextSearchInterface;
 
 /**
  * @author lixiaofei

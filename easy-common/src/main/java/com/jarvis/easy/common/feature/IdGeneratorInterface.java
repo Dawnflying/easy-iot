@@ -1,4 +1,4 @@
-package com.jarvis.common.feature;
+package com.jarvis.easy.common.feature;
 
 /**
  * @author lixiaofei
