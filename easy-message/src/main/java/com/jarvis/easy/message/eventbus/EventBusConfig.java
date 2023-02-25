@@ -20,8 +20,7 @@ public class EventBusConfig {
 
     @Bean
     public Executor eventBusExecutor() {
-        return new ThreadPoolExecutor(coreSize, maxSize, keepAlive, TimeUnit.SECONDS, BLOCKING_QUEUE,
-                r -> new Thread("event-bus-thread"));
+        return new ThreadPoolExecutor(coreSize, maxSize, keepAlive, TimeUnit.SECONDS, BLOCKING_QUEUE);
     }
 
     @Bean
