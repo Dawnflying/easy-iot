@@ -7,4 +7,10 @@ public interface HasIdGenerator {
     default String generateId() {
         return "";
     }
+
+    default String getId() {
+        return "";
+    }
+
+    ;
 }

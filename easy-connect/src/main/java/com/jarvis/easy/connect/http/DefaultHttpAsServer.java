@@ -20,7 +20,7 @@ public class DefaultHttpAsServer extends AbstractVerticle implements AsServerInt
     private String name;
 
     @Override
-    public void start() throws Exception {
+    public void start() {
         HttpServer server = vertx.createHttpServer();
 
         server.requestHandler(request -> {

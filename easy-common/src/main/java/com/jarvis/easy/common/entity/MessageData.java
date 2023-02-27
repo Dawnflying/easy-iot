@@ -14,7 +14,11 @@ import java.util.Map;
 public class MessageData implements IsTraceable, HasAttributes {
 
     /**
-     *
+     * device unique id;
+     */
+    private String iot;
+    /**
+     * message unique id;
      */
     private int messageId;
     /**

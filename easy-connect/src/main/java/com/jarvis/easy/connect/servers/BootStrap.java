@@ -1,6 +1,7 @@
 package com.jarvis.easy.connect.servers;
 
 import com.google.gson.Gson;
+import com.jarvis.easy.connect.http.DefaultHttpAsServer;
 import com.jarvis.easy.connect.mqtt.DefaultMqttAsServer;
 import com.jarvis.easy.data.entity.DeviceGatewayMetaEntity;
 import com.jarvis.easy.data.repo.DeviceGatewayMetaRepository;
@@ -16,7 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 public class BootStrap {
 
-    private Map<String, AsServerInterface> serverInterfaceMap = new ConcurrentHashMap<>();
+    private Map<String, AsServerInterface> SERVER_MAP = new ConcurrentHashMap<>();
 
     @Resource
     private DeviceGatewayMetaRepository deviceGatewayMetaRepository;
@@ -37,14 +38,19 @@ public class BootStrap {
                 if ("mqtt".equals(type)) {
                     DefaultMqttAsServer server = new DefaultMqttAsServer(entity.getId() + "", entity.getName(), properties);
                     server.start();
-                    serverInterfaceMap.put(name, server);
+                    SERVER_MAP.put(name, server);
+                }
+
+                if ("http".equals(type)) {
+                    DefaultHttpAsServer server = new DefaultHttpAsServer();
+                    server.start();
+                    SERVER_MAP.put(name, server);
                 }
             });
-
         }
     }
 
-    public Map<String, AsServerInterface> getServerInterfaceMap() {
-        return serverInterfaceMap;
+    public Map<String, AsServerInterface> getServerMap() {
+        return SERVER_MAP;
     }
 }

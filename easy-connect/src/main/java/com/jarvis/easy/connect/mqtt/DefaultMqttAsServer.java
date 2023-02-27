@@ -2,6 +2,8 @@ package com.jarvis.easy.connect.mqtt;
 
 import com.jarvis.easy.common.entity.MessageData;
 import com.jarvis.easy.connect.servers.AsServerInterface;
+import com.jarvis.easy.connect.session.MqttSession;
+import com.jarvis.easy.connect.session.SessionManager;
 import com.jarvis.easy.message.queue.MessageDataPersistentQueueManager;
 import io.netty.handler.codec.mqtt.MqttQoS;
 import io.vertx.core.Vertx;
@@ -34,6 +36,7 @@ public class DefaultMqttAsServer implements AsServerInterface {
         MqttServer mqttServer = MqttServer.create(vertx, options);
 
         mqttServer.endpointHandler(endpoint -> {
+            SessionManager.registerSession(endpoint.clientIdentifier(), new MqttSession(endpoint));
             endpoint.publishAutoAck(true);
             System.out.println("MQTT client [" + endpoint.clientIdentifier() + "] request to connect, clean session = " + endpoint.isCleanSession());
 
@@ -49,32 +52,7 @@ public class DefaultMqttAsServer implements AsServerInterface {
             System.out.println("is it endpoint auto keep alive" + endpoint.isAutoKeepAlive());
 
             endpoint.publishHandler(message -> {
-                String topic = message.topicName();
-                Buffer payload = message.payload();
-                boolean isDup = message.isDup();
-                MqttQoS qosLevel = message.qosLevel();
-                boolean isRetain = message.isRetain();
 
-                System.out.println("Received message from client [" + endpoint.clientIdentifier() + "] " + "on topic [" + topic + "] with QoS [" + qosLevel + "]");
-
-                if (isDup) {
-                    System.out.println("Duplicated");
-                }
-                if (isRetain) {
-                    System.out.println("Retained");
-                }
-
-                System.out.println("Payload : " + payload.toString());
-
-                MessageData messageData = new MessageData();
-                messageData.setMessageId(message.messageId());
-                messageData.setPayload(message.payload().getBytes());
-                messageData.setDup(isDup);
-                messageData.setRetain(isRetain);
-                messageData.setTopicName(topic);
-                MessageDataPersistentQueueManager.INSTANCE.save(topic, null, messageData);
-                //向所有客户端广播
-                endpoint.publish(topic, payload, qosLevel, false, isRetain);
 
             });
 
