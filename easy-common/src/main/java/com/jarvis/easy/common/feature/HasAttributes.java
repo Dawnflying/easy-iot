@@ -18,11 +18,26 @@ public interface HasAttributes {
      */
     void removeAttribute(String key);
 
+    /**
+     * 获取属性值
+     *
+     * @param key
+     * @return
+     */
     String getAttribute(String key);
 
     /**
      * @return
      */
     Map<String, Object> getAttributions();
+
+    /**
+     * 是否是只读属性，只允许通过设备上传
+     *
+     * @return
+     */
+    default boolean isReadOnly() {
+        return false;
+    }
 
 }
