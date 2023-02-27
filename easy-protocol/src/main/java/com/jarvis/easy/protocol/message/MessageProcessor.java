@@ -2,6 +2,7 @@ package com.jarvis.easy.protocol.message;
 
 import com.jarvis.easy.common.annotation.EasyPipeline;
 import com.jarvis.easy.common.entity.MessageData;
+import com.jarvis.easy.data.attribute.SysAttributeConstant;
 import com.jarvis.easy.protocol.DefaultProtocolManager;
 import com.jarvis.easy.protocol.engine.ScriptEngineExecutor;
 import com.jarvis.easy.protocol.meta.ProtocolMeta;
@@ -26,11 +27,11 @@ public class MessageProcessor {
             return null;
         }
 
-        if (StringUtils.isEmpty(data.getAttribution("_sys_protocol_id"))) {
+        if (StringUtils.isEmpty(data.getAttribute(SysAttributeConstant.SYS_PROTO_ID))) {
             return data;
         }
 
-        String protocolId = data.getAttribution("_sys_protocol_id");
+        String protocolId = data.getAttribute(SysAttributeConstant.SYS_PROTO_ID);
 
         ProtocolMeta protocolMeta = defaultProtocolManager.getProtocol(protocolId);
 

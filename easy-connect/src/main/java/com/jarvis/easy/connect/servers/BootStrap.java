@@ -1,7 +1,7 @@
 package com.jarvis.easy.connect.servers;
 
 import com.google.gson.Gson;
-import com.jarvis.easy.connect.mqtt.DefaultMqttServer;
+import com.jarvis.easy.connect.mqtt.DefaultMqttAsServer;
 import com.jarvis.easy.data.entity.DeviceGatewayMetaEntity;
 import com.jarvis.easy.data.repo.DeviceGatewayMetaRepository;
 import org.springframework.stereotype.Component;
@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 public class BootStrap {
 
-    private Map<String, ServerInterface> serverInterfaceMap = new ConcurrentHashMap<>();
+    private Map<String, AsServerInterface> serverInterfaceMap = new ConcurrentHashMap<>();
 
     @Resource
     private DeviceGatewayMetaRepository deviceGatewayMetaRepository;
@@ -35,7 +35,7 @@ public class BootStrap {
                 String name = entity.getName();
 
                 if ("mqtt".equals(type)) {
-                    DefaultMqttServer server = new DefaultMqttServer(entity.getId() + "", entity.getName(), properties);
+                    DefaultMqttAsServer server = new DefaultMqttAsServer(entity.getId() + "", entity.getName(), properties);
                     server.start();
                     serverInterfaceMap.put(name, server);
                 }
@@ -44,7 +44,7 @@ public class BootStrap {
         }
     }
 
-    public Map<String, ServerInterface> getServerInterfaceMap() {
+    public Map<String, AsServerInterface> getServerInterfaceMap() {
         return serverInterfaceMap;
     }
 }

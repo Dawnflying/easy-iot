@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @EasyPipeline(name = "timeseries-processor")
-public class TimeSeriesPersistentor {
+public class TimeSeriesPersistProcessor {
 
     public void process(TimeSeriesData timeSeriesData) {
         //insert into timescaleDB

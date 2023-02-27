@@ -1,18 +1,16 @@
 package com.jarvis.easy.protocol.message;
 
-import com.google.common.eventbus.AllowConcurrentEvents;
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import com.jarvis.easy.common.entity.MessageData;
 import com.jarvis.easy.common.entity.TimeSeriesData;
 import com.jarvis.easy.common.utils.GsonUtils;
-import com.jarvis.easy.data.timeseries.TimeSeriesPersistentor;
+import com.jarvis.easy.data.timeseries.TimeSeriesPersistProcessor;
 import com.jarvis.easy.data.transform.TimeSeriesTransformer;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import java.util.concurrent.Executor;
 
 @Component
 public class MessageHandler {
@@ -27,7 +25,7 @@ public class MessageHandler {
     private TimeSeriesTransformer timeSeriesTransformer;
 
     @Resource
-    private TimeSeriesPersistentor timeSeriesPersistentor;
+    private TimeSeriesPersistProcessor timeSeriesPersistProcessor;
 
     @PostConstruct
     public void init() {
@@ -40,6 +38,6 @@ public class MessageHandler {
         System.out.println("Received event: " + GsonUtils.toString(messageData));
         Object result = messageProcessor.process(messageData);
         TimeSeriesData timeSeriesData = timeSeriesTransformer.transform(result);
-        timeSeriesPersistentor.process(timeSeriesData);
+        timeSeriesPersistProcessor.process(timeSeriesData);
     }
 }

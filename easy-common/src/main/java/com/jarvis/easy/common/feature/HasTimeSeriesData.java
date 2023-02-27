@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @author lixiaofei
  */
-public interface TimeSeriesInterface {
+public interface HasTimeSeriesData {
 
     /**
      * 获取时序历史数据

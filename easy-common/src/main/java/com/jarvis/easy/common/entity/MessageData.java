@@ -1,10 +1,9 @@
 package com.jarvis.easy.common.entity;
 
-import com.jarvis.easy.common.feature.AttributionInterface;
-import com.jarvis.easy.common.feature.TraceableInterface;
+import com.jarvis.easy.common.feature.HasAttributes;
+import com.jarvis.easy.common.feature.IsTraceable;
 import lombok.Data;
 
-import java.nio.Buffer;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +11,7 @@ import java.util.Map;
  * @author lixiaofei
  */
 @Data
-public class MessageData implements TraceableInterface, AttributionInterface {
+public class MessageData implements IsTraceable, HasAttributes {
 
     /**
      *
@@ -44,17 +43,17 @@ public class MessageData implements TraceableInterface, AttributionInterface {
     private Map<String, Object> attributes = new HashMap<>();
 
     @Override
-    public void addAttribution(String key, String value) {
+    public void addAttribute(String key, String value) {
         attributes.put(key, value);
     }
 
     @Override
-    public void removeAttribution(String key) {
+    public void removeAttribute(String key) {
         attributes.remove(key);
     }
 
     @Override
-    public String getAttribution(String key) {
+    public String getAttribute(String key) {
         return (String) attributes.get(key);
     }
 

@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * 服务器接口
  */
-public interface ServerInterface {
+public interface AsServerInterface {
 
     /**
      * 获取id

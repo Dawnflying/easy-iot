@@ -3,7 +3,7 @@ package com.jarvis.easy.common.feature;
 /**
  * @author lixiaofei
  */
-public interface IdGeneratorInterface {
+public interface HasIdGenerator {
     default String generateId() {
         return "";
     }

@@ -1,6 +1,6 @@
 package com.jarvis.easy.common.entity;
 
-import com.jarvis.easy.common.feature.TraceableInterface;
+import com.jarvis.easy.common.feature.IsTraceable;
 import lombok.Data;
 
 import java.util.Map;
@@ -9,7 +9,7 @@ import java.util.Map;
  * @author lixiaofei
  */
 @Data
-public class TimeSeriesSnapshotData implements TraceableInterface {
+public class TimeSeriesSnapshotData implements IsTraceable {
 
     /**
      * 快照数据

@@ -1,7 +1,7 @@
 package com.jarvis.easy.connect.mqtt;
 
 import com.jarvis.easy.common.entity.MessageData;
-import com.jarvis.easy.connect.servers.ServerInterface;
+import com.jarvis.easy.connect.servers.AsServerInterface;
 import com.jarvis.easy.message.queue.MessageDataPersistentQueueManager;
 import io.netty.handler.codec.mqtt.MqttQoS;
 import io.vertx.core.Vertx;
@@ -19,7 +19,7 @@ import java.util.Map;
  */
 @Data
 @AllArgsConstructor
-public class DefaultMqttServer implements ServerInterface {
+public class DefaultMqttAsServer implements AsServerInterface {
 
     private String id;
 

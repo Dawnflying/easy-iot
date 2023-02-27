@@ -5,20 +5,20 @@ import java.util.Map;
 /**
  * @author lixiaofei
  */
-public interface AttributionInterface {
+public interface HasAttributes {
 
     /**
      * @param key
      * @param value
      */
-    void addAttribution(String key, String value);
+    void addAttribute(String key, String value);
 
     /**
      * @param key
      */
-    void removeAttribution(String key);
+    void removeAttribute(String key);
 
-    String getAttribution(String key);
+    String getAttribute(String key);
 
     /**
      * @return

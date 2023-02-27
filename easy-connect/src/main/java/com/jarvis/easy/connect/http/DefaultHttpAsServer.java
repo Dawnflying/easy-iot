@@ -4,7 +4,7 @@ package com.jarvis.easy.connect.http;
  * @author lixiaofei
  */
 
-import com.jarvis.easy.connect.servers.ServerInterface;
+import com.jarvis.easy.connect.servers.AsServerInterface;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.http.HttpServer;
 import io.vertx.core.http.HttpServerResponse;
@@ -13,7 +13,7 @@ import lombok.Data;
 import java.util.Map;
 
 @Data
-public class DefaultHttpServer extends AbstractVerticle implements ServerInterface {
+public class DefaultHttpAsServer extends AbstractVerticle implements AsServerInterface {
 
     private String id;
 

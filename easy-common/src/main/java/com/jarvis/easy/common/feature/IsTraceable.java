@@ -3,7 +3,7 @@ package com.jarvis.easy.common.feature;
 /**
  * @author lixiaofei
  */
-public interface TraceableInterface {
+public interface IsTraceable {
     /**
      * 获取traceId
      *
