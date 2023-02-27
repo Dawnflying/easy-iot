@@ -93,7 +93,7 @@
             <dependency>
                 <groupId>org.openjdk.nashorn</groupId>
                 <artifactId>nashorn-core</artifactId>
-                <version>15.2</version>
+                <version>1.8.0_202</version>
             </dependency>
 
             <!--            minio-->

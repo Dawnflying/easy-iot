@@ -1,0 +1,24 @@
+version: '3'
+services:
+  db:
+    image: timescale/timescaledb:latest-pg12
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: postgresql
+  pgadmin:
+    image: dpage/pgadmin4
+    ports:
+      - "8080:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: frankxiaofei@126.com
+      PGADMIN_DEFAULT_PASSWORD: postgresql
+volumes:
+  db-data:
+
+networks:
+  default:
+    external:
+      name: dev_network

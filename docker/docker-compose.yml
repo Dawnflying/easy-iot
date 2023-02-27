@@ -1,42 +1,42 @@
 version: '3.7'
 
 services:
-  db:
-    image: postgres:latest
-    restart: always
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: postgresql
-      POSTGRES_PASSWORD: postgresql
-      POSTGRES_DB: easy_iot
-      PGDATA: /var/lib/postgresql/data/pgdata
-      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --locale=en_US.UTF-8"
-      POSTGRES_INITDB_WALDIR: /var/lib/postgresql/data/pgwal
-      TZ: 'Asia/Shanghai'
-    volumes:
-#      - db-data:/var/lib/postgresql/data
-      - db-backup:/backup
-      - ./init-scripts:/docker-entrypoint-initdb.d
-#      - ./config/pg_hba.conf:/var/lib/postgresql/data/pgdata/pg_hba.conf
-    command: >
-      postgres -c config_file=/var/lib/postgresql/data/pgdata/postgresql.conf
-               -c logging_collector=on
-               -c log_directory=/var/lib/postgresql/data/pg_log
-               -c log_filename=postgresql-%Y-%m-%d_%H%M%S.log
-               -c log_rotation_age=1d
-               -c log_truncate_on_rotation=on
-               -c log_statement=all
-  redis:
-    image: reg.hdec.com/yp-iot/redis:5.0.4
-    container_name: yunpeng-redis
-    ports:
-      - "6379:6379"
-    volumes:
-      - "./redis-volume:/data"
-    command: redis-server --appendonly yes --requirepass ecidiecidi@99
-    environment:
-      - TZ=Asia/Shanghai
+#  db:
+#    image: postgres:latest
+#    restart: always
+#    ports:
+#      - "5432:5432"
+#    environment:
+#      POSTGRES_USER: postgresql
+#      POSTGRES_PASSWORD: postgresql
+#      POSTGRES_DB: easy_iot
+#      PGDATA: /var/lib/postgresql/data/pgdata
+#      POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --locale=en_US.UTF-8"
+#      POSTGRES_INITDB_WALDIR: /var/lib/postgresql/data/pgwal
+#      TZ: 'Asia/Shanghai'
+#    volumes:
+##      - db-data:/var/lib/postgresql/data
+#      - db-backup:/backup
+#      - ./init-scripts:/docker-entrypoint-initdb.d
+##      - ./config/pg_hba.conf:/var/lib/postgresql/data/pgdata/pg_hba.conf
+#    command: >
+#      postgres -c config_file=/var/lib/postgresql/data/pgdata/postgresql.conf
+#               -c logging_collector=on
+#               -c log_directory=/var/lib/postgresql/data/pg_log
+#               -c log_filename=postgresql-%Y-%m-%d_%H%M%S.log
+#               -c log_rotation_age=1d
+#               -c log_truncate_on_rotation=on
+#               -c log_statement=all
+#  redis:
+#    image: reg.hdec.com/yp-iot/redis:5.0.4
+#    container_name: yunpeng-redis
+#    ports:
+#      - "6379:6379"
+#    volumes:
+#      - "./redis-volume:/data"
+#    command: redis-server --appendonly yes --requirepass ecidiecidi@99
+#    environment:
+#      - TZ=Asia/Shanghai
 
   minio:
     image: reg.hdec.com/fawkes/minio:latest
